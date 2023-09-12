@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react";
-import useUserData from "context/userData"
+import useUserData from "context/userData";
+import useData from "context/data";
 import { useRouter } from "next/router";
 
-const Home = () => {
+const Dashboard = () => {
   const {user, userData} = useUserData
   const router = useRouter()
 
   useEffect(()=>{
-    if(!user)
-      router.push("/auth/login")
-    else
-      router.push("/auth/hallway")
+
   },[])
   
   return(
@@ -20,4 +18,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Dashboard

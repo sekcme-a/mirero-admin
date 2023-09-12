@@ -1,6 +1,7 @@
 // import ReactQuill, {Quill} from 'react-quill';
 
 import dynamic from "next/dynamic";
+import { storage } from "firebase/firebase";
 // let imgResize
 // let parchment
 // let module
@@ -72,7 +73,6 @@ const ReactQuill = dynamic(
 );
 import React, { useRef, useEffect, useState } from "react"
 import { compressImage } from 'src/public/hooks/compressImage';
-import { firebaseHooks } from 'firebase/hooks';
 // import ImageResize from 'quill-image-resize-module-react';
 import 'quill/dist/quill.snow.css'
 
@@ -108,7 +108,7 @@ const Editor = (props) => {
         const range = quillRef.current.getEditor().getSelection(true);
 
         // 서버에 올려질때까지 표시할 로딩 placeholder 삽입
-       quillRef.current.getEditor().insertEmbed(range.index, "image", `image/loading.gif`);
+       quillRef.current.getEditor().insertEmbed(range.index, "image", `/images/loading.gif`);
 
         try {
           // 필자는 파이어 스토어에 저장하기 때문에 이런식으로 유틸함수를 따로 만들어줬다
@@ -120,8 +120,10 @@ const Editor = (props) => {
               img = await compressImage(file)
             }else img = file
           }else img = file
-          const filePath = `${props.path}/${Date.now()}`;
-          const url = await firebaseHooks.upload_image_to_storage(img, filePath); 
+          const filePath = `${props.path}/${Date.now()}`;; 
+          const fileRef = storage.ref().child(filePath)
+          await fileRef.put(img)
+          const url = await fileRef.getDownloadURL()
           
           // 정상적으로 업로드 됐다면 로딩 placeholder 삭제
           quillRef.current.getEditor().deleteText(range.index, 1);
