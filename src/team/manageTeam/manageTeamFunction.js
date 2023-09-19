@@ -59,14 +59,15 @@ export const FUNCTION = {
     const adminDoc = await db.collection("team_admin").doc(teamId).get()
     const usersUid = adminDoc.data().users
     const newUsersUid = removeFromArray(usersUid, uid)
-    batch.update(db.collection("team_admin").doc(teamId), {users: newUsersUid})
+    batch.update(db.collection("team_admin").doc(teamId), {users: [...newUsersUid]})
     
 
     //해당 유저에게있는 roles 권한삭제
     const userDoc = await db.collection("user").doc(uid).get()
     const userRoles = userDoc.data().roles
     const newUserRoles = removeStringFromArray(userRoles, teamId)
-    batch.update(db.collection("user").doc(uid), {roles: newUserRoles})
+    console.log(newUserRoles)
+    batch.update(db.collection("user").doc(uid), {roles: [...newUserRoles]})
     
     batch.commit()
   },

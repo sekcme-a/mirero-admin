@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import useUserData from "context/userData"
 import { TextField, Button } from "@mui/material";
-import { firestore as db } from "firebase/firebase";
+import { auth, firestore as db } from "firebase/firebase";
 
 const AskName = ({setStep}) => {
   const [name, setName] = useState("")
@@ -64,6 +64,9 @@ const AskName = ({setStep}) => {
         disabled={isSubmitting}
       >
         {isSubmitting ? "제출 중":"확인"}
+      </Button>
+      <Button sx={{ml:"20px"}} onClick={()=>auth.signOut()}>
+        로그아웃
       </Button>
     </>
   )

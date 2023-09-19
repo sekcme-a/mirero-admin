@@ -88,7 +88,7 @@ const AskTeam = (props) => {
   } 
 
   const onTeamClick = (id) => {
-    router.push(`/${id}/dashboard`)
+    router.push(`/${id}/team/manageTeam`)
   }
   
   if(userData)

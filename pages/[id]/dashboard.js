@@ -7,9 +7,12 @@ const Dashboard = () => {
   const {user, userData} = useUserData
   const router = useRouter()
 
-  useEffect(()=>{
-
-  },[])
+  // useEffect(()=>{
+  //   if(!(userData.roles.includes("super_admin") || userData.roles.includes(`${id}_admin`))){
+  //     alert("접근 권한이 없습니다.")
+  //     router.push("/")
+  //   }
+  // },[])
   
   return(
     <>

@@ -43,6 +43,7 @@ import BorderColorIcon from '@mui/icons-material/BorderColor';
 import PostAddIcon from '@mui/icons-material/PostAdd';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
 import YouTubeIcon from '@mui/icons-material/YouTube';
+import useUserData from "context/userData";
 
 
 
@@ -51,9 +52,16 @@ const Navbar = () => {
   const {id} = router.query
   const {team, fetch_team} = useData()
   const [isLoading, setIsLoading] = useState(true)
+  const {userData} = useUserData()
 
   const [openedItem, setOpenedItem] = useState(-1)
 
+  // useEffect(()=>{
+  //   if(userData?.roles && !(userData.roles.includes("super_admin") || userData.roles.includes(`${id}_admin`)|| userData.roles.includes(`${id}_high_admin`)||userData.roles.includes(`${id}_super_admin`))){
+  //     alert("접근 권한이 없습니다.")
+  //     router.push("/")
+  //   }
+  // },[userData])
 
   useEffect(()=>{
     const fetch_data = async () => {

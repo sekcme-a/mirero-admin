@@ -88,6 +88,7 @@ const ManageTeam = () => {
             variant="contained"
             onClick={()=>onCancelAuthorityClick(row.id)}
             size="small"
+            disabled={row.roles.includes(`${id}_super_admin`)||(!userData?.roles.includes("super_admin")&&(userData?.roles.includes(`${id}_high_admin`)||userData?.roles.includes(`${id}_admin`)))}
           >
             권한해제
           </Button>
@@ -121,7 +122,7 @@ const ManageTeam = () => {
   const onCancelAuthorityClick = async (uid) => {
     await FUNCTION.cancel_authority(id, uid)
     alert("권한해제되었습니다.")
-    router.reload()
+    // router.reload()
   }
 
   //승격 클릭

@@ -17,8 +17,8 @@ const NoAuthority = () => {
   const [sended, setSended] = useState(false)
 
   useEffect(()=>{
-    if(userData.roles.includes("super_admin") || userData.roles.includes(`${id}_admin`))
-      router.push(`/${id}/dashboard`)
+    if(userData.roles.includes("super_admin") || userData.roles.includes(`${id}_admin`) || userData.roles.includes(`${id}_high_admin`)||userData.roles.includes(`${id}_super_admin`))
+      router.push(`/${id}/team/manageTeam`)
   },[])
 
   const onButtonClick = async () => {
