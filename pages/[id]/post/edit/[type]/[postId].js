@@ -35,7 +35,7 @@ const Edit = () => {
   const [values, setValues] = useState({
     content: "",
     title:"",
-    author:"동우개발",
+    author:"사단법인 미래로",
     condition:"미게제"
   })
   const onValuesChange = (prop) => (event) => {
@@ -220,14 +220,6 @@ const Edit = () => {
       ...prevValues,
       thumbnailImg: url
     }))
-    // await db.collection("data").doc(type).update({
-    //   ...values,
-    //   thumbnailImg: url
-    // })
-    // handleData(type, {
-    //   ...values,
-    //   [item]: url
-    // })
     alert("적용되었습니다.")
   }
 
@@ -258,13 +250,13 @@ const Edit = () => {
             variant="outlined"
             error={error.type==="author"}
             helperText={error.type!=="author" ? "" : error.message}
-            value={values.author || "동우개발"}
+            value={values.author || "사단법인 미래로"}
             onChange={onValuesChange("author")}
             size="small"
             fullWidth
           />
         </Grid>
-        {type!=="announcement" && 
+        {type==="tomorlove" && 
           <Grid item xs={12}>
             <h1>썸네일 이미지</h1>
             <DropperImage imgURL={values.thumbnailImg} setImgURL={handleImgUrl} path={`data/post/${type}/${postId}`} setLoading={setIsImageLoading} />

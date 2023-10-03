@@ -45,7 +45,7 @@ import NewspaperIcon from '@mui/icons-material/Newspaper';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import useUserData from "context/userData";
 
-
+import Groups2Icon from '@mui/icons-material/Groups2';
 
 const Navbar = () => {
   const router = useRouter()
@@ -154,27 +154,19 @@ const Navbar = () => {
             </ListItemButton>
           </List>
           <List component="div" disablePadding>
-            <ListItemButton sx={{ pl: 4 }} onClick={()=>onClick("post/news")}>
+            <ListItemButton sx={{ pl: 4 }} onClick={()=>onClick("post/notice")}>
               <ListItemIcon>
                 <NewspaperIcon />
               </ListItemIcon>
-              <ListItemText primary="동행뉴스" />
+              <ListItemText primary="게시판" />
             </ListItemButton>
           </List>
           <List component="div" disablePadding>
-            <ListItemButton sx={{ pl: 4 }} onClick={()=>onClick("post/gallery")}>
+            <ListItemButton sx={{ pl: 4 }} onClick={()=>onClick("post/tomorlove")}>
               <ListItemIcon>
-                <NewspaperIcon />
+                <Groups2Icon />
               </ListItemIcon>
-              <ListItemText primary="동우사보" />
-            </ListItemButton>
-          </List>
-          <List component="div" disablePadding>
-            <ListItemButton sx={{ pl: 4 }} onClick={()=>onClick("post/24h")}>
-              <ListItemIcon>
-                <YouTubeIcon />
-              </ListItemIcon>
-              <ListItemText primary="동우24시" />
+              <ListItemText primary="투머럽클럽" />
             </ListItemButton>
           </List>
         </Collapse>
@@ -182,28 +174,21 @@ const Navbar = () => {
 
 
 
-        
+      
 
-        <ListItemButton onClick={() => window.open("https://dongwoo-demo.netlify.app/admin/login")} >
+        <ListItemButton onClick={()=>onClick("members")}>
           <ListItemIcon>
-            <BorderColorIcon />
+            <Groups2Icon />
           </ListItemIcon>
-          <ListItemText primary="홈페이지 편집" />
+          <ListItemText primary="투마럽클럽 멤버관리" />
         </ListItemButton>
-
         <ListItemButton onClick={()=>onClick("contact")}>
           <ListItemIcon>
             <HelpOutlineIcon />
           </ListItemIcon>
-          <ListItemText primary="사업문의 관리" />
+          <ListItemText primary="문의사항 관리" />
         </ListItemButton>
 
-        <ListItemButton onClick={()=>onClick("recommand")}>
-          <ListItemIcon>
-            <HelpOutlineIcon />
-          </ListItemIcon>
-          <ListItemText primary="건의사항 관리" />
-        </ListItemButton>
     </List>
     </div>
   )
